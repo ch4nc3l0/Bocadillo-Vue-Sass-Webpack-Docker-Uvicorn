@@ -1,0 +1,27 @@
+version: '3'
+
+services: 
+  bocadilloweb:
+    build: 
+      context: .
+      dockerfile: bocadillo.Dockerfile
+    expose: 
+      - "80"
+    image: bocadillo-custom
+    volumes: 
+    - ./app:/app
+
+  staticproxy:
+    build: 
+      context: .
+      dockerfile: nginxstaticproxy.Dockerfile
+    depends_on: 
+      - bocadilloweb
+    links:
+      - bocadilloweb
+    ports:
+      - "80:80"
+    volumes: 
+      - ./app/static:/static
+    
+

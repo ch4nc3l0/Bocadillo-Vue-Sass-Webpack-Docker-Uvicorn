@@ -1,8 +1,7 @@
 from bocadillo import App, Templates, static
 
-app = App(static_dir='../app/webpack',
-          static_root='webpack')
-templates = Templates(app, directory='../app/webpack')
+app = App(static_dir=None)
+templates = Templates(app, directory='../app/static/dist')
 
 @app.route("/")
 async def homepage(req, res):

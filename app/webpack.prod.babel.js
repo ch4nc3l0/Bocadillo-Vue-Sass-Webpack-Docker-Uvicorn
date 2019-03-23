@@ -1,4 +1,3 @@
-import '@babel/polyfill';
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
@@ -11,8 +10,8 @@ const merge = require("webpack-merge");
 module.exports = merge(common,{
     mode: 'production',
     output: {
-      filename: "webpack/[name].[contentHash].js",
-      path: path.resolve(__dirname, "webpack")
+      filename: "dist/[name].[contentHash].js",
+      path: path.resolve(__dirname, 'webpack')
     },
     optimization: {
       minimizer:[
@@ -20,6 +19,7 @@ module.exports = merge(common,{
         new TerserPlugin(),
         new HtmlWebpackPlugin({
           template: "./templates/index.html",
+          filename: "dist/index.html",
           minify: {
             removeAttributeQuotes: true,
             collapseWhitespace: true,
@@ -29,7 +29,7 @@ module.exports = merge(common,{
       ]
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: "webpack/[name].[contentHash].css" }),
+        new MiniCssExtractPlugin({ filename: "dist/[name].[contentHash].css" }),
         new CleanWebpackPlugin()
       ],
     module: {
