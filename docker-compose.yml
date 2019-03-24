@@ -8,6 +8,8 @@ services:
     expose: 
       - "80"
     image: bocadillo-custom
+    networks: 
+      - proxy
     volumes: 
     - ./app:/app
 
@@ -17,11 +19,13 @@ services:
       dockerfile: nginxstaticproxy.Dockerfile
     depends_on: 
       - bocadilloweb
-    links:
-      - bocadilloweb
+    networks: 
+      - proxy
     ports:
       - "80:80"
     volumes: 
       - ./app/static:/static
     
-
+networks: 
+  proxy:
+    driver: bridge
