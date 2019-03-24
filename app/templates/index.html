@@ -6,15 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hello World</title>
 </head>
-<body>
+
+<!-- Stop flashes of unstyled content -->
+<body style="visibility: hidden;" onload="js_Load()">
 
     <div id="startercode">
-        <h1 id="html">Hello World From HTML</h1>
-        <h1 id="bocadillo">{{variable}}</h1>
-        <h1 id="vue">[[message]]</h1>
-        <h id="blue">Deploying, Caching, Cache-Busting and Auto-Reload Enabled</h1>
+
+        <div id="heading">
+            <img id="zombie" src="../static/img/zombie.png">
+            <p id="title">Zombie</p>
+            <p id="tagline">Deploying, Caching, Cache-Busting and Auto-Reload Enabled</p>
+        </div>
+
+        <div id="body">
+            <p id="html">Hello World From HTML</p>
+            <p id="bocadillo">{{variable}}</p>
+            <p id="vue">[[message]]</p>
+            <p id="database">{{postgres}}</p>
+        </div>
+        
     </div>
 
+<!-- Stop flashes of unstyled content -->
+<script>let js_Load=()=>document.body.style.visibility='visible';</script>
+<!-- If user has no javascript set body to visible -->
+<noscript><style>body { visibility: visible; }</style></noscript>
 </body>
 
 

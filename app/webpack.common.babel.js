@@ -20,13 +20,15 @@ module.exports = {
         },
         {
           test: /\.(svg|png|jpg|gif)$/,
-          use: {
+          use: [
+            {
             loader: "file-loader",
             options: {
-              name: "[name].[hash].[ext]",
-              outputPath: "imgs"
-            }
-          }
+              name: "dist/[name].[hash].[ext]",
+              
+            },
+          },
+        ],
         },
           { test: /\.js$/, 
             exclude: /node_modules/, 
