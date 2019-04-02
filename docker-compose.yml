@@ -5,11 +5,14 @@ services:
     build: 
       context: .
       dockerfile: bocadillo.Dockerfile
+    depends_on: 
+      - postgres
     expose: 
       - "80"
     image: bocadillo-custom
     networks: 
       - proxy
+      - database
     volumes: 
     - ./app:/app
 
@@ -25,7 +28,26 @@ services:
       - "80:80"
     volumes: 
       - ./app/static:/static
+
+  postgres:
+    build:
+      context: .
+      dockerfile: postgres.Dockerfile
+    environment: 
+      POSTGRES_USER: yourusername
+      POSTGRES_PASSWORD: change_to_super_secret_password
+      POSTGRES_DB: yourdbname
+    networks: 
+      - database
+    volumes:
+      - examplepostboc:/var/lib/postgresql
+      
     
 networks: 
   proxy:
     driver: bridge
+  database:
+    driver: bridge
+
+volumes:
+  examplepostboc:
