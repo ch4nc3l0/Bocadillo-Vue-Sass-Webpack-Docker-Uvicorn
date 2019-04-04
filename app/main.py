@@ -10,7 +10,7 @@ db.bind(provider='postgres', user='yourusername',
         password='change_to_super_secret_password', 
         host='postgres', database='yourdbname')
 #^^^^^ Please make sure to use env variables as this information should be private ^^^^^^###
-db.generate_mapping()
+db.generate_mapping(create_tables=True)
 
 
 # Create index route
@@ -27,7 +27,7 @@ async def homepage(req, res):
         print(data)
     
     with orm.db_session:
-        dbquery = orm.select((a.name, a.age) for a in Animal)[:]
+        dbquery = orm.select((a.age, a.name) for a in Animal)[:]
         
 
     res.html = await templates.render("index.html", variable="Hello World From Bocadillo!", dbquery=dbquery)

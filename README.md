@@ -1,11 +1,22 @@
-# A complete starter template for ASGI Web apps
-## Features:
-- Full development setting complete with docker image
-- Bocadillo back-end (python) ASGI framework
-- Vue front end
-- Sass styles
-- Webpack pre-configured with babel (Issue with bocadillo not serving directly out of webpack folder in production / workaround in place move webpack/webpack files into just webpack then delete the second webpack folder)
+<center><img src="app/static/img/zombie.png" ...></center>
+<center>Zombie Logo</center>
 
-## Plans for future:
-- Setup docker swarm and integrate db
-- Fix really bad docs (sorry if your reading this was in a hurry)
+# Zombie
+### A web app template with extra braains
+- Python bocadillo 
+- Docker ready
+  - Nginx proxy basic config
+  - Postgres basic config
+- Vue enabled
+- Webpack ready 
+- Live code updates
+
+## Installation
+- NPM must be installed for webpack and the node dependencies to function correctly.
+- Docker to be able to run containers and get as close to production as possible
+- Python 3.7 is used for the bocadillo server
+
+
+
+
+
